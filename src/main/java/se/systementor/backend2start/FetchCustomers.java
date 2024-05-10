@@ -16,19 +16,46 @@ import se.systementor.backend2start.demos.Catalog;
 import se.systementor.backend2start.demos.CsvUser;
 import se.systementor.backend2start.demos.Post;
 import se.systementor.backend2start.demos.book;
+import se.systementor.backend2start.queue.EmitLog;
+import se.systementor.backend2start.queue.ReceiveLogs;
 
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.List;
+
+import static java.net.http.HttpRequest.BodyPublishers.ofInputStream;
 
 @ComponentScan
 public class FetchCustomers implements CommandLineRunner {
 
-//    @Autowired
-//    private se.systementor.backend2start.Utils.DataSeeder dataSeeder;
+    @Autowired
+    private se.systementor.backend2start.Utils.DataSeeder dataSeeder;
 
     @Override
     public void run(String... args) throws Exception {
+
+        var emitLog = new EmitLog();
+        emitLog.main();
+//        var receiveLogs = new ReceiveLogs();
+//        receiveLogs.main();
+
+
         System.out.println("Kör fetcbcustomers");
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://javabl.systementor.se/api/stefan/blacklist"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString("{\"email\":\"stefa@aaasdadsdsd.com\", \"name\":\"Kalle\", \"isOk\":\"false\" }"))
+                .build();
+
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body)
+                .thenAccept(System.out::println)
+                .join();
 
 //        //https://jsonplaceholder.typicode.com/posts
 //        JsonMapper jsonMapper = new JsonMapper();

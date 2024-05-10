@@ -82,6 +82,14 @@
             <artifactId>jackson-dataformat-csv</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>5.21.0</version>
+        </dependency>
+
+
 
     </dependencies>
 

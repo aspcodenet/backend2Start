@@ -1042,4 +1042,22 @@ textarea,select,input[type=text],input[type=date],input[type=number]{
 
 }
 
+.pagination {
+    display: inline-block;
+}
+
+.pagination li {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+.pagination li.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination li:hover:not(.active) {background-color: #ddd;}
 
