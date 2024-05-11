@@ -14,8 +14,8 @@ public class Backend2StartApplication {
 
         if(args.length == 0) {
             SpringApplication.run(Backend2StartApplication.class, args);
-        }else if(Objects.equals(args[0], "consoleapp1")){
-            SpringApplication application = new SpringApplication(ConsoleApp1.class);
+        }else if(Objects.equals(args[0], "QueueSystem")){
+            SpringApplication application = new SpringApplication(QueueSystem.class);
             application.setWebApplicationType(WebApplicationType.NONE);
             application.run(args);
 
@@ -24,7 +24,13 @@ public class Backend2StartApplication {
             application.setWebApplicationType(WebApplicationType.NONE);
             application.run(args);
 
-        }
+        }else if(Objects.equals(args[0], "ReadQueueApp")){
+        SpringApplication application = new SpringApplication(ReadQueueApp.class);
+        application.setWebApplicationType(WebApplicationType.NONE);
+        application.run(args);
+
+    }
+
     }
 
 
