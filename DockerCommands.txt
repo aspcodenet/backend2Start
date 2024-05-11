@@ -1,0 +1,4 @@
+
+docker build -t registry.aspcode.net/javaqueueintegration   -f  .\DockerfileSite .
+
+docker build -t registry.aspcode.net/javaqueuesystem   -f  .\DockerfileSystem .

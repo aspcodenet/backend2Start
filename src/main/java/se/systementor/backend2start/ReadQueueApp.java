@@ -23,7 +23,7 @@ import java.net.URL;
 public class ReadQueueApp implements CommandLineRunner {
 
 
-    private String queueName = "0d2f3826-77ba-49c0-9523-f19e7cfda4b0";
+    private String queueName = "3b009a69-8ab6-4437-a13a-cfc9c4069067";
     @Override
     public void run(String... args) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
