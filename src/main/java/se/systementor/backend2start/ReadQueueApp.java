@@ -43,23 +43,7 @@ public class ReadQueueApp implements CommandLineRunner {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
             System.out.println(" [x] Received '" + message + "'");
-            EventBase base = mapper.readValue(message, EventBase.class);
-            if(base.getClass() == RoomCleaningFinished.class){
-                RoomCleaningFinished fin = (RoomCleaningFinished) base;
-                System.out.println(" [x] Received '" + fin.CleaningByUser + "'");
-            }
-            if(base.getClass() == RoomCleaningStarted.class){
-                RoomCleaningStarted fin = (RoomCleaningStarted) base;
-                System.out.println(" [x] Received '" + fin.CleaningByUser + "'");
-            }
-            if(base.getClass() == RoomOpened.class){
-                RoomOpened fin = (RoomOpened) base;
-                System.out.println(" [x] Received '" + fin.RoomNo + "'");
-            }
-            if(base.getClass() == RoomClosed.class){
-                RoomClosed fin = (RoomClosed) base;
-                System.out.println(" [x] Received '" + fin.RoomNo + "'");
-            }
+            // https://www.baeldung.com/jackson-annotations#bd-jackson-polymorphic-type-handling-annotations
         };
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
 
